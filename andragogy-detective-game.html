@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adult Learner Discovery: Know Yourself, Learn Better</title>
+    <title>Adult Learner Discovery: Understanding Adult Students</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,8 +14,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            color: #1a202c;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            color: #e0e0e0;
             padding: 20px;
             min-height: 100vh;
             position: relative;
@@ -30,8 +30,8 @@
             right: 0;
             bottom: 0;
             background:
-                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(57, 255, 20, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 102, 0, 0.05) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
@@ -46,11 +46,12 @@
         header {
             text-align: center;
             padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
+            background: rgba(20, 20, 20, 0.95);
+            border-radius: 16px;
             margin-bottom: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.3), 0 0 60px rgba(255, 102, 0, 0.2);
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(57, 255, 20, 0.2);
             animation: fadeInDown 0.8s ease;
         }
 
@@ -78,7 +79,7 @@
         }
 
         h1 {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #39FF14, #FF6600, #00FFFF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -89,7 +90,7 @@
         }
 
         .subtitle {
-            color: #4a5568;
+            color: #b0b0b0;
             font-size: 1.3em;
             font-weight: 300;
             margin-bottom: 15px;
@@ -97,24 +98,24 @@
 
         .tagline {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, #39FF14, #FF6600);
+            color: #0a0a0a;
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 0.9em;
-            font-weight: 600;
+            font-weight: 700;
             margin-top: 10px;
         }
 
         .game-intro {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(20, 20, 20, 0.95);
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 16px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
             backdrop-filter: blur(10px);
             animation: fadeIn 1s ease;
-            border-left: 6px solid #667eea;
+            border-left: 4px solid #39FF14;
         }
 
         @keyframes fadeIn {
@@ -123,7 +124,7 @@
         }
 
         .game-intro h2 {
-            color: #667eea;
+            color: #39FF14;
             margin-bottom: 15px;
             font-size: 1.8em;
             font-weight: 700;
@@ -134,7 +135,7 @@
 
         .game-intro p {
             line-height: 1.8;
-            color: #2d3748;
+            color: #d0d0d0;
             font-size: 1.05em;
         }
 
@@ -146,15 +147,16 @@
         }
 
         .case-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
+            background: rgba(20, 20, 20, 0.95);
+            border-radius: 16px;
             padding: 30px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
             animation: fadeInUp 0.6s ease backwards;
+            border: 1px solid rgba(57, 255, 20, 0.2);
         }
 
         .case-card::before {
@@ -163,8 +165,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 3px;
+            background: linear-gradient(90deg, #39FF14, #FF6600, #00FFFF);
             transform: scaleX(0);
             transition: transform 0.4s ease;
         }
@@ -193,12 +195,13 @@
 
         .case-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.4), 0 0 50px rgba(255, 102, 0, 0.2);
         }
 
         .case-card.solved {
-            background: linear-gradient(135deg, rgba(72, 187, 120, 0.1), rgba(72, 187, 120, 0.05));
-            border: 2px solid #48bb78;
+            background: rgba(20, 20, 20, 0.95);
+            border: 2px solid #39FF14;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
         }
 
         .case-card.failed {
@@ -221,19 +224,19 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, #39FF14, #FF6600);
+            color: #0a0a0a;
             width: 40px;
             height: 40px;
-            border-radius: 12px;
+            border-radius: 8px;
             font-weight: 700;
             margin-bottom: 15px;
             font-size: 1.1em;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
         }
 
         .case-title {
-            color: #2d3748;
+            color: #e0e0e0;
             font-size: 1.5em;
             font-weight: 700;
             margin-bottom: 12px;
@@ -242,18 +245,18 @@
 
         .principle-tag {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
-            color: #667eea;
+            background: rgba(57, 255, 20, 0.1);
+            color: #39FF14;
             padding: 6px 14px;
-            border-radius: 20px;
+            border-radius: 12px;
             font-size: 0.85em;
             font-weight: 600;
             margin-bottom: 15px;
-            border: 1px solid rgba(102, 126, 234, 0.3);
+            border: 1px solid rgba(57, 255, 20, 0.4);
         }
 
         .case-description {
-            color: #4a5568;
+            color: #b0b0b0;
             margin-bottom: 20px;
             line-height: 1.7;
             font-size: 1.05em;
@@ -267,11 +270,11 @@
         }
 
         .choice-btn {
-            background: white;
-            border: 2px solid #e2e8f0;
-            color: #2d3748;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            color: #d0d0d0;
             padding: 16px 20px;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: left;
@@ -287,16 +290,16 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
+            width: 3px;
             height: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #39FF14, #FF6600);
             transform: scaleY(0);
             transition: transform 0.3s ease;
         }
 
         .choice-btn:hover {
-            border-color: #667eea;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-color: #39FF14;
+            background: rgba(57, 255, 20, 0.1);
             transform: translateX(4px);
         }
 
@@ -333,15 +336,15 @@
         }
 
         .feedback.correct {
-            background: linear-gradient(135deg, rgba(72, 187, 120, 0.15), rgba(72, 187, 120, 0.1));
-            border: 2px solid #48bb78;
-            color: #22543d;
+            background: rgba(57, 255, 20, 0.1);
+            border: 2px solid #39FF14;
+            color: #39FF14;
         }
 
         .feedback.incorrect {
-            background: linear-gradient(135deg, rgba(245, 101, 101, 0.15), rgba(245, 101, 101, 0.1));
-            border: 2px solid #f56565;
-            color: #742a2a;
+            background: rgba(255, 102, 0, 0.1);
+            border: 2px solid #FF6600;
+            color: #FF6600;
         }
 
         .feedback strong {
@@ -362,23 +365,25 @@
         }
 
         .status-badge.solved {
-            background: linear-gradient(135deg, #48bb78, #38a169);
-            color: white;
-            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+            background: linear-gradient(135deg, #39FF14, #00FF88);
+            color: #0a0a0a;
+            box-shadow: 0 0 12px rgba(57, 255, 20, 0.6);
         }
 
         .status-badge.unsolved {
-            background: #e2e8f0;
-            color: #718096;
+            background: rgba(40, 40, 40, 0.8);
+            color: #808080;
+            border: 1px solid rgba(57, 255, 20, 0.2);
         }
 
         .progress-bar {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
+            background: rgba(20, 20, 20, 0.95);
+            border-radius: 16px;
             padding: 30px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(57, 255, 20, 0.2);
         }
 
         .progress-info {
@@ -388,32 +393,33 @@
             margin-bottom: 15px;
             font-size: 1.1em;
             font-weight: 600;
-            color: #2d3748;
+            color: #e0e0e0;
         }
 
         .progress-track {
-            background: #e2e8f0;
+            background: rgba(40, 40, 40, 0.8);
             height: 40px;
-            border-radius: 20px;
+            border-radius: 12px;
             overflow: hidden;
             position: relative;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(57, 255, 20, 0.2);
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            background: linear-gradient(90deg, #39FF14, #FF6600, #00FFFF);
             background-size: 200% 100%;
             height: 100%;
             transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #0a0a0a;
             font-weight: 700;
             font-size: 1.1em;
-            border-radius: 20px;
+            border-radius: 12px;
             animation: gradientShift 3s ease infinite;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
         }
 
         @keyframes gradientShift {
@@ -441,12 +447,13 @@
         }
 
         .victory-content {
-            background: white;
-            border-radius: 24px;
+            background: rgba(20, 20, 20, 0.98);
+            border-radius: 16px;
             padding: 50px;
             text-align: center;
             max-width: 600px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 40px rgba(57, 255, 20, 0.4), 0 0 80px rgba(255, 102, 0, 0.2);
+            border: 2px solid rgba(57, 255, 20, 0.3);
             animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -474,7 +481,7 @@
         }
 
         .victory-content h2 {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #39FF14, #FF6600, #00FFFF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -484,30 +491,30 @@
         }
 
         .victory-content p {
-            color: #4a5568;
+            color: #d0d0d0;
             font-size: 1.2em;
             line-height: 1.7;
             margin: 20px 0;
         }
 
         .reset-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, #39FF14, #FF6600);
+            color: #0a0a0a;
             border: none;
             padding: 16px 40px;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 1.1em;
             font-weight: 700;
             margin-top: 20px;
             font-family: 'Inter', sans-serif;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
         }
 
         .reset-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.8);
         }
 
         @media (max-width: 768px) {
@@ -531,40 +538,41 @@
             <svg class="header-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        <stop offset="0%" style="stop-color:#39FF14;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#FF6600;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00FFFF;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-                <circle cx="50" cy="50" r="35" fill="url(#brainGrad)" opacity="0.2"/>
-                <path d="M50 20 C35 20, 25 30, 25 45 C25 55, 30 60, 35 62 C32 65, 30 70, 35 75 C40 80, 50 80, 50 80 C50 80, 60 80, 65 75 C70 70, 68 65, 65 62 C70 60, 75 55, 75 45 C75 30, 65 20, 50 20 Z" fill="url(#brainGrad)"/>
-                <circle cx="42" cy="45" r="3" fill="white"/>
-                <circle cx="58" cy="45" r="3" fill="white"/>
-                <path d="M35 52 Q50 58 65 52" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <circle cx="50" cy="50" r="30" fill="url(#brainGrad)" opacity="0.3"/>
+                <circle cx="50" cy="50" r="25" stroke="url(#brainGrad)" stroke-width="3" fill="none"/>
+                <circle cx="43" cy="45" r="4" fill="url(#brainGrad)"/>
+                <circle cx="57" cy="45" r="4" fill="url(#brainGrad)"/>
+                <path d="M40 58 Q50 62 60 58" stroke="url(#brainGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
             </svg>
             <h1>Adult Learner Discovery</h1>
-            <p class="subtitle">Discover How You Learn Best as an Adult Student</p>
-            <span class="tagline">✨ Know Yourself, Learn Smarter</span>
+            <p class="subtitle">Understanding Adult Students: They're Not Children</p>
+            <span class="tagline">Respect, Autonomy, and Diverse Needs</span>
         </header>
 
         <div class="game-intro">
             <h2>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 17L12 22L22 17" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 12L12 17L22 12" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#39FF14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#39FF14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#39FF14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                Your Learning Journey
+                For Faculty: Understanding Your Adult Students
             </h2>
-            <p><strong>Hey there, adult learner!</strong> You're not in high school anymore. As an adult student, you bring unique strengths, experiences, and needs to your education. This interactive experience will help you understand the six key characteristics of adult learners based on <strong>Malcolm Knowles' Andragogy principles</strong>.</p>
-            <p style="margin-top: 15px;">Each scenario presents a learning situation. Choose the approach that resonates with how you, as an adult, learn best. Understanding these principles will help you advocate for better learning experiences and take control of your education!</p>
+            <p><strong>Faculty:</strong> Your students are adults, not children. They have jobs, families, responsibilities, and rich life experiences. Whether they're in a traditional classroom or learning online asynchronously, they deserve to be treated with the respect and autonomy that adults need.</p>
+            <p style="margin-top: 15px;"><strong>These scenarios reveal the six principles of adult learning (Andragogy)</strong> that help faculty understand their diverse student population. Adult learners have different needs, motivations, and circumstances—especially in online asynchronous settings where faculty sometimes unintentionally treat them like dependent children rather than capable adults. Explore each principle to better serve all your students.</p>
         </div>
 
         <div class="progress-bar">
             <div class="progress-info">
                 <span style="display: flex; align-items: center; gap: 8px;">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 11L12 14L22 4" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 11L12 14L22 4" stroke="#39FF14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="#39FF14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     Principles Discovered
                 </span>
@@ -587,24 +595,25 @@
             <svg class="victory-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="trophyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        <stop offset="0%" style="stop-color:#39FF14;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#FF6600;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00FFFF;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-                <circle cx="50" cy="50" r="40" fill="url(#trophyGrad)" opacity="0.2"/>
-                <path d="M30 40 L30 25 L70 25 L70 40 Q70 55 50 60 Q30 55 30 40 Z" fill="url(#trophyGrad)"/>
-                <rect x="45" y="60" width="10" height="15" fill="url(#trophyGrad)"/>
-                <rect x="35" y="75" width="30" height="5" rx="2" fill="url(#trophyGrad)"/>
-                <circle cx="50" cy="40" r="8" fill="white" opacity="0.3"/>
+                <circle cx="50" cy="50" r="35" fill="url(#trophyGrad)" opacity="0.2"/>
+                <path d="M35 40 L35 30 L65 30 L65 40 Q65 52 50 56 Q35 52 35 40 Z" fill="url(#trophyGrad)"/>
+                <rect x="46" y="56" width="8" height="12" fill="url(#trophyGrad)"/>
+                <rect x="38" y="68" width="24" height="4" rx="2" fill="url(#trophyGrad)"/>
             </svg>
-            <h2>🎉 You Did It! 🎉</h2>
-            <p><strong>Congratulations!</strong> You've discovered all six principles of adult learning. You now understand what makes you unique as an adult learner!</p>
-            <p style="font-size: 1em; margin-top: 25px;">Use this knowledge to:</p>
-            <ul style="text-align: left; margin: 15px auto; max-width: 400px; color: #4a5568;">
-                <li style="margin: 8px 0;">✓ Advocate for better learning experiences</li>
-                <li style="margin: 8px 0;">✓ Choose courses that respect your adult needs</li>
-                <li style="margin: 8px 0;">✓ Communicate with professors about how you learn best</li>
-                <li style="margin: 8px 0;">✓ Take control of your educational journey</li>
+            <h2>All Principles Discovered!</h2>
+            <p><strong>Well done!</strong> You now understand the six principles of andragogy and how they apply to your adult students.</p>
+            <p style="font-size: 1em; margin-top: 25px;">Apply this knowledge to better serve your students:</p>
+            <ul style="text-align: left; margin: 15px auto; max-width: 450px; color: #b0b0b0;">
+                <li style="margin: 8px 0;">✓ Treat all students as adults, regardless of delivery modality</li>
+                <li style="margin: 8px 0;">✓ Respect students' diverse backgrounds and responsibilities</li>
+                <li style="margin: 8px 0;">✓ Provide autonomy and choice in online and traditional settings</li>
+                <li style="margin: 8px 0;">✓ Value students' life experiences as learning resources</li>
+                <li style="margin: 8px 0;">✓ Avoid infantilizing language and overly rigid structures</li>
             </ul>
             <button class="reset-btn" onclick="resetGame()">Explore Again</button>
         </div>
@@ -619,30 +628,31 @@
                 icon: `<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                            <stop offset="0%" style="stop-color:#39FF14;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#FF6600;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00FFFF;stop-opacity:1" />
                         </linearGradient>
                     </defs>
-                    <circle cx="30" cy="30" r="25" fill="url(#grad1)" opacity="0.2"/>
-                    <circle cx="30" cy="30" r="20" stroke="url(#grad1)" stroke-width="3" fill="none"/>
-                    <text x="30" y="38" font-size="24" font-weight="bold" fill="url(#grad1)" text-anchor="middle">?</text>
+                    <circle cx="30" cy="30" r="20" fill="url(#grad1)" opacity="0.2"/>
+                    <circle cx="30" cy="30" r="16" stroke="url(#grad1)" stroke-width="2" fill="none"/>
+                    <text x="30" y="37" font-size="20" font-weight="bold" fill="url(#grad1)" text-anchor="middle">?</text>
                 </svg>`,
-                description: "Your professor assigns a complex group project worth 40% of your grade but doesn't explain why group work is important or how it connects to real-world applications. How do you feel?",
+                description: "As faculty, you assign a major project but don't explain its relevance. Your students—working adults with limited time—ask 'Why does this matter for my career/life?' How should you respond?",
                 choices: [
                     {
-                        text: "Fine with it - I'll just do what I'm told without questioning",
+                        text: "Tell them to just do the assignment without questioning—students don't need to know the 'why'",
                         correct: false,
-                        feedback: "Not quite! As an adult learner, you NEED to understand the 'why' behind what you're learning. Unlike children, adults are motivated by understanding the purpose and relevance of their learning."
+                        feedback: "Wrong! Adult learners aren't children who accept 'because I said so.' They have jobs, families, and limited time. They need to understand WHY they're investing precious time and energy into learning. Dismissing this need shows you don't respect them as adults."
                     },
                     {
-                        text: "Frustrated - I need to understand WHY this matters and how it applies to my goals before I can fully engage",
+                        text: "Clearly explain HOW the learning connects to real-world applications, career development, and their personal goals before diving into content",
                         correct: true,
-                        feedback: "Exactly! As an adult learner, you need to know WHY you're learning something before you invest time and energy. You deserve clear explanations of how learning connects to real-world applications, career goals, or personal development. This is your right as an adult student!"
+                        feedback: "Perfect! Adult learners NEED to know the 'why' before investing time and energy. Unlike children, adults are motivated by understanding purpose and relevance. Faculty must respect this by clearly connecting learning to real-world applications, career goals, and practical benefits. This isn't hand-holding—it's treating students as adults who make informed decisions about their time."
                     },
                     {
-                        text: "I prefer not knowing the purpose - surprises are better",
+                        text: "The relevance should be obvious—if they can't figure it out, they shouldn't be in college",
                         correct: false,
-                        feedback: "That's not how adult learning works! Adults need context and purpose. You have limited time and competing responsibilities, so understanding the 'why' helps you prioritize and stay motivated."
+                        feedback: "Terrible approach! Adult learners have competing responsibilities and need clear connections to real-world relevance. Making them guess wastes their time and shows disrespect for their adult status. Faculty should explicitly connect content to practical applications."
                     }
                 ]
             },
@@ -651,27 +661,26 @@
                 principle: "Self-Direction",
                 title: "Who's in Control?",
                 icon: `<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="30" cy="30" r="25" fill="url(#grad1)" opacity="0.2"/>
-                    <circle cx="30" cy="22" r="8" fill="url(#grad1)"/>
-                    <path d="M15 50 Q30 35 45 50" fill="url(#grad1)"/>
-                    <path d="M22 42 L30 35 L38 42" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <circle cx="30" cy="30" r="20" fill="url(#grad1)" opacity="0.2"/>
+                    <circle cx="30" cy="24" r="6" fill="url(#grad1)"/>
+                    <path d="M18 45 Q30 38 42 45" fill="url(#grad1)"/>
                 </svg>`,
-                description: "You're taking an online course. Which learning structure would you prefer as an adult student?",
+                description: "You're an adult student in an online asynchronous course juggling work and family. Your professor treats you like a high schooler with rigid, micromanaged assignments. How should faculty approach online adult learners?",
                 choices: [
                     {
-                        text: "The professor controls everything: strict deadlines, no choices, every step dictated",
+                        text: "Strict control with rigid deadlines works best—treat online students like high schoolers who need constant supervision",
                         correct: false,
-                        feedback: "This contradicts your nature as an adult learner! You're capable of making decisions about your own learning. Being treated like a child when you're an adult can be demotivating."
+                        feedback: "Wrong approach! Adult students—especially in online asynchronous settings—are juggling multiple responsibilities. Treating them like children is infantilizing and demotivating. They're capable adults managing careers, families, and education simultaneously."
                     },
                     {
-                        text: "I can choose my project topic, set some personal goals, and have flexible pathways while still having structure and support",
+                        text: "Provide structure with flexibility—offer choice in topics, flexible deadlines within reason, and autonomy while supporting them as adult partners in learning",
                         correct: true,
-                        feedback: "Perfect! As an adult, you're self-directed and responsible for your own life decisions. You learn best when you have autonomy and can guide your own learning journey while having appropriate support. You're not a passive recipient - you're an active partner in your education!"
+                        feedback: "Exactly right! Adult learners are self-directed and manage complex lives. They thrive with autonomy and choice within a supportive framework. In online asynchronous courses especially, respecting their adult status means trusting them to manage their time while providing clear structure and support—not micromanagement."
                     },
                     {
-                        text: "Complete freedom with no structure, guidance, or deadlines",
+                        text: "Give complete freedom with no structure or deadlines—they're adults, they'll figure it out",
                         correct: false,
-                        feedback: "Close, but not quite! Self-direction doesn't mean abandonment. Adults still benefit from structure and expert guidance - but they want to be active participants, not passive receivers."
+                        feedback: "Not quite! Self-direction doesn't mean abandonment. Adult learners still need structure, clear expectations, and faculty support. The key is treating them as capable partners, not dependent children or completely on their own."
                     }
                 ]
             },
@@ -680,27 +689,26 @@
                 principle: "Experience",
                 title: "Your Life Experience Matters",
                 icon: `<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="30" cy="30" r="25" fill="url(#grad1)" opacity="0.2"/>
-                    <rect x="15" y="20" width="30" height="25" rx="2" fill="url(#grad1)"/>
-                    <rect x="20" y="15" width="20" height="3" fill="url(#grad1)"/>
-                    <circle cx="30" cy="32" r="6" fill="white" opacity="0.5"/>
+                    <circle cx="30" cy="30" r="20" fill="url(#grad1)" opacity="0.2"/>
+                    <rect x="18" y="22" width="24" height="20" rx="2" fill="url(#grad1)"/>
+                    <rect x="22" y="18" width="16" height="2" fill="url(#grad1)"/>
                 </svg>`,
-                description: "You're a 28-year-old student who has worked in customer service for 5 years. In a business class, the professor ignores students' work experiences and only lectures from the textbook. How should your experience be valued?",
+                description: "Your class has students ranging from 22 to 55 years old—some fresh from undergrad, others with decades of work experience in various fields. As faculty, how should you approach this diversity?",
                 choices: [
                     {
-                        text: "My work experience is irrelevant - I should just absorb textbook theory like everyone else",
+                        text: "Ignore their backgrounds—just lecture from the textbook so everyone gets the same content",
                         correct: false,
-                        feedback: "Wrong! Your lived experience is one of your greatest assets as an adult learner. Years of real-world experience give you valuable context that enriches learning."
+                        feedback: "Big mistake! Adult students bring diverse, rich experiences that are valuable learning resources. A 45-year-old manager and a 23-year-old recent graduate have different perspectives—both valuable. Ignoring this wealth of experience wastes a major learning asset."
                     },
                     {
-                        text: "My real-world experience should be valued and integrated into learning - it's a resource, not a barrier",
+                        text: "Actively integrate students' diverse experiences—use discussions, case studies, and assignments that let them apply their varied backgrounds as learning resources",
                         correct: true,
-                        feedback: "Absolutely right! As an adult learner, you bring rich life and work experience to your education. This isn't baggage - it's treasure! Your experiences provide context, examples, and deeper understanding. You deserve learning environments that value and integrate your experience, not ignore it."
+                        feedback: "Excellent! Adult learners bring incredibly diverse experiences—different careers, cultures, ages, and life situations. This diversity is a treasure, not a barrier! Faculty should create opportunities for students to share and learn from each other's experiences. Their real-world knowledge enriches everyone's learning."
                     },
                     {
-                        text: "Experience doesn't matter in academic settings",
+                        text: "Only value traditional academic experience—work experience doesn't matter in higher education",
                         correct: false,
-                        feedback: "That's an outdated view! Adult learners' experiences are valuable resources. Connecting new learning to your experiences helps you understand and retain information better."
+                        feedback: "Completely wrong! Adult learners' varied experiences are among their greatest strengths. A single mother working full-time, a career-changer, and a military veteran all bring valuable perspectives. Faculty who dismiss real-world experience miss opportunities for deeper, richer learning."
                     }
                 ]
             },
@@ -709,10 +717,10 @@
                 principle: "Readiness to Learn",
                 title: "Perfect Timing",
                 icon: `<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="30" cy="30" r="25" fill="url(#grad1)" opacity="0.2"/>
-                    <circle cx="30" cy="30" r="18" stroke="url(#grad1)" stroke-width="3" fill="none"/>
-                    <line x1="30" y1="30" x2="30" y2="18" stroke="url(#grad1)" stroke-width="3" stroke-linecap="round"/>
-                    <line x1="30" y1="30" x2="38" y2="30" stroke="url(#grad1)" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="30" cy="30" r="20" fill="url(#grad1)" opacity="0.2"/>
+                    <circle cx="30" cy="30" r="14" stroke="url(#grad1)" stroke-width="2" fill="none"/>
+                    <line x1="30" y1="30" x2="30" y2="20" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="30" y1="30" x2="36" y2="30" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"/>
                 </svg>`,
                 description: "You're required to take a statistics course, but you can't see how it applies to your life right now. Meanwhile, you're desperately trying to learn Excel for a project at work. What motivates you most?",
                 choices: [
@@ -738,13 +746,9 @@
                 principle: "Problem-Centered Learning",
                 title: "Show Me How This Applies",
                 icon: `<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="30" cy="30" r="25" fill="url(#grad1)" opacity="0.2"/>
-                    <rect x="18" y="18" width="24" height="24" rx="3" fill="none" stroke="url(#grad1)" stroke-width="3"/>
-                    <circle cx="30" cy="30" r="6" fill="url(#grad1)"/>
-                    <line x1="30" y1="24" x2="30" y2="15" stroke="url(#grad1)" stroke-width="2"/>
-                    <line x1="30" y1="36" x2="30" y2="45" stroke="url(#grad1)" stroke-width="2"/>
-                    <line x1="36" y1="30" x2="45" y2="30" stroke="url(#grad1)" stroke-width="2"/>
-                    <line x1="24" y1="30" x2="15" y2="30" stroke="url(#grad1)" stroke-width="2"/>
+                    <circle cx="30" cy="30" r="20" fill="url(#grad1)" opacity="0.2"/>
+                    <rect x="20" y="20" width="20" height="20" rx="2" fill="none" stroke="url(#grad1)" stroke-width="2"/>
+                    <circle cx="30" cy="30" r="5" fill="url(#grad1)"/>
                 </svg>`,
                 description: "You're learning about communication theory. Which approach would engage you most as an adult learner?",
                 choices: [
@@ -770,9 +774,8 @@
                 principle: "Internal Motivation",
                 title: "What Really Drives You?",
                 icon: `<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="30" cy="30" r="25" fill="url(#grad1)" opacity="0.2"/>
-                    <path d="M30 15 L35 25 L46 26 L38 34 L40 45 L30 39 L20 45 L22 34 L14 26 L25 25 Z" fill="url(#grad1)"/>
-                    <circle cx="30" cy="30" r="6" fill="white" opacity="0.4"/>
+                    <circle cx="30" cy="30" r="20" fill="url(#grad1)" opacity="0.2"/>
+                    <path d="M30 18 L34 26 L42 27 L36 33 L38 41 L30 36 L22 41 L24 33 L18 27 L26 26 Z" fill="url(#grad1)"/>
                 </svg>`,
                 description: "Why did you decide to go back to school or pursue your education as an adult?",
                 choices: [
