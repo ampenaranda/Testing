@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Andragogy Detective: Mystery of Adult Learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e6e6e6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        h1 {
+            color: #d4af37;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #a8a8a8;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+
+        .game-intro {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .case-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #555;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .case-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .case-card.solved {
+            border-color: #4caf50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .case-card.failed {
+            border-color: #f44336;
+            background: rgba(244, 67, 54, 0.1);
+        }
+
+        .case-number {
+            display: inline-block;
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .case-title {
+            color: #d4af37;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .case-description {
+            color: #c0c0c0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .choice-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #666;
+            color: #e6e6e6;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+        }
+
+        .choice-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: #d4af37;
+        }
+
+        .choice-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4caf50;
+            color: #4caf50;
+        }
+
+        .feedback.incorrect {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #f44336;
+            color: #f44336;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .status-badge.solved {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-badge.unsolved {
+            background: #666;
+            color: white;
+        }
+
+        .progress-bar {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .progress-track {
+            background: rgba(255, 255, 255, 0.1);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #d4af37, #ffd700);
+            height: 100%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a2e;
+            font-weight: bold;
+        }
+
+        .victory-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .victory-screen.show {
+            display: flex;
+        }
+
+        .victory-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 3px solid #d4af37;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
+        }
+
+        .victory-content h2 {
+            color: #d4af37;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .reset-btn {
+            background: #d4af37;
+            color: #1a1a2e;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .reset-btn:hover {
+            background: #ffd700;
+        }
+
+        .principle-tag {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 The Andragogy Detective 🔍</h1>
+            <p class="subtitle">Solve the Mystery of Adult Learning</p>
+        </header>
+
+        <div class="game-intro">
+            <h2 style="color: #d4af37; margin-bottom: 10px;">📋 Your Mission</h2>
+            <p>Welcome, Detective! You've been called to investigate six mysterious cases at the Adult Learning Academy. Each case represents one of Malcolm Knowles' principles of <strong>Andragogy</strong> (adult learning theory).</p>
+            <p style="margin-top: 10px;">Your task: Apply the correct teaching approach to solve each case. Choose wisely - understanding these principles will help you become a master educator of adult learners!</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-info">
+                <span>🎯 Cases Solved</span>
+                <span id="progress-text">0 / 6</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill" style="width: 0%">
+                    <span id="progress-percent">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-board" id="game-board">
+            <!-- Cases will be generated here -->
+        </div>
+    </div>
+
+    <div class="victory-screen" id="victory-screen">
+        <div class="victory-content">
+            <h2>🎉 Case Closed! 🎉</h2>
+            <p style="font-size: 1.2em; margin: 20px 0;">Congratulations, Detective! You've successfully solved all six cases and mastered the principles of Andragogy!</p>
+            <p style="margin: 20px 0;">You now understand how adult learners differ from children and how to design effective learning experiences for faculty and adult students.</p>
+            <button class="reset-btn" onclick="resetGame()">Start a New Investigation</button>
+        </div>
+    </div>
+
+    <script>
+        const cases = [
+            {
+                id: 1,
+                principle: "Need to Know",
+                title: "The Reluctant Professor",
+                description: "Dr. Martinez refuses to attend the new learning management system training. She says, 'Why do I need to change what I've been doing for 20 years?'",
+                choices: [
+                    {
+                        text: "Tell her it's mandatory policy and she must comply.",
+                        correct: false,
+                        feedback: "Not quite! Adult learners need to understand the reason and value before engaging. Mandates alone don't motivate adults effectively."
+                    },
+                    {
+                        text: "Explain how the new system will save her time grading and help her track student progress more effectively.",
+                        correct: true,
+                        feedback: "Excellent detective work! Adults need to know WHY they're learning something. By showing how it benefits her work, you've addressed her 'need to know' and provided motivation."
+                    },
+                    {
+                        text: "Schedule her for training without explanation.",
+                        correct: false,
+                        feedback: "Missed clue! Adults resist learning when they don't understand its relevance. You need to help them see the value first."
+                    }
+                ]
+            },
+            {
+                id: 2,
+                principle: "Self-Concept",
+                title: "The Micromanaged Workshop",
+                description: "You're planning a faculty development workshop. How should you structure the learning experience for these experienced educators?",
+                choices: [
+                    {
+                        text: "Provide a strict schedule with no deviation, telling them exactly what to do step-by-step.",
+                        correct: false,
+                        feedback: "Not the best approach! Adults have a self-concept of being responsible for their own decisions. They resist being treated like children."
+                    },
+                    {
+                        text: "Let them choose breakout topics, set personal learning goals, and share their expertise with peers.",
+                        correct: true,
+                        feedback: "Perfect! Adults are self-directed and want autonomy. By allowing choice and recognizing their ability to guide their own learning, you respect their self-concept as independent learners."
+                    },
+                    {
+                        text: "Lecture for 3 hours without breaks or interaction.",
+                        correct: false,
+                        feedback: "Case unsolved! This treats adults like passive recipients. Adults need to be active participants in their learning."
+                    }
+                ]
+            },
+            {
+                id: 3,
+                principle: "Experience",
+                title: "The Diverse Faculty Cohort",
+                description: "Your workshop has faculty from different disciplines: engineering, arts, business, and sciences. How do you leverage this diversity?",
+                choices: [
+                    {
+                        text: "Ignore their backgrounds and teach everyone the same way.",
+                        correct: false,
+                        feedback: "You've overlooked a key clue! Adults bring rich, diverse experiences that should be valued, not ignored."
+                    },
+                    {
+                        text: "Create opportunities for them to share discipline-specific applications and learn from each other's experiences.",
+                        correct: true,
+                        feedback: "Brilliant deduction! Adult learners' experiences are a rich resource for learning. By facilitating peer sharing, you transform the group into a learning community where everyone's experience adds value."
+                    },
+                    {
+                        text: "Separate them by discipline so they don't get confused.",
+                        correct: false,
+                        feedback: "Not quite! Diversity of experience is an asset in adult learning, not a liability. Cross-pollination of ideas enriches learning."
+                    }
+                ]
+            },
+            {
+                id: 4,
+                principle: "Readiness to Learn",
+                title: "The Timing Problem",
+                description: "You want faculty to learn about inclusive teaching practices. When offered in August before the semester, only 3 people signed up. What's the issue?",
+                choices: [
+                    {
+                        text: "They're lazy and don't care about inclusion.",
+                        correct: false,
+                        feedback: "Wrong trail! Don't assume the worst. Adult learning readiness is about timing and relevance, not laziness."
+                    },
+                    {
+                        text: "Offer it mid-semester when they're actively facing classroom challenges and can immediately apply strategies.",
+                        correct: true,
+                        feedback: "Case solved! Adults are ready to learn when the content helps them cope with real-life situations. Mid-semester, they're experiencing actual classroom dynamics and can see immediate application."
+                    },
+                    {
+                        text: "Make it mandatory for everyone regardless of their current needs.",
+                        correct: false,
+                        feedback: "Missed the mark! Forcing learning when adults aren't ready reduces effectiveness. Timing matters in adult education."
+                    }
+                ]
+            },
+            {
+                id: 5,
+                principle: "Orientation to Learning",
+                title: "The Theory vs. Practice Dilemma",
+                description: "You're teaching research methods to faculty. How should you approach this?",
+                choices: [
+                    {
+                        text: "Start with abstract statistical theories and formulas for several sessions before any application.",
+                        correct: false,
+                        feedback: "Not the adult learning way! Adults are problem-centered, not subject-centered. Pure theory without application disengages adult learners."
+                    },
+                    {
+                        text: "Present a real research problem they're facing, then introduce methods as tools to solve it.",
+                        correct: true,
+                        feedback: "Excellent work, Detective! Adults have a problem-centered orientation to learning. They engage when learning is framed around real problems they need to solve, not abstract subjects."
+                    },
+                    {
+                        text: "Give them a textbook to read independently without context.",
+                        correct: false,
+                        feedback: "You've missed a crucial clue! Adults need to see how learning applies to real-world problems, not just absorb information."
+                    }
+                ]
+            },
+            {
+                id: 6,
+                principle: "Motivation",
+                title: "The Incentive Question",
+                description: "You want to motivate faculty to engage in professional development. What's most likely to work long-term?",
+                choices: [
+                    {
+                        text: "Offer certificates and external rewards for completion.",
+                        correct: false,
+                        feedback: "Not bad, but not the best answer! While external rewards help, adults are MORE motivated by internal factors like personal satisfaction and professional growth."
+                    },
+                    {
+                        text: "Help them see how it addresses their desire to be better teachers, increase job satisfaction, and achieve personal goals.",
+                        correct: true,
+                        feedback: "Outstanding detective work! While adults respond to external motivators, they're primarily driven by internal factors: self-esteem, quality of life, job satisfaction, and self-actualization. Tap into these intrinsic motivations!"
+                    },
+                    {
+                        text: "Threaten negative performance reviews for non-participation.",
+                        correct: false,
+                        feedback: "Case unsolved! Fear and coercion are poor motivators for adult learners. Adults respond better to intrinsic motivation than threats."
+                    }
+                ]
+            }
+        ];
+
+        let solvedCases = new Set();
+
+        function initGame() {
+            const gameBoard = document.getElementById('game-board');
+            gameBoard.innerHTML = '';
+
+            cases.forEach(caseData => {
+                const caseCard = createCaseCard(caseData);
+                gameBoard.appendChild(caseCard);
+            });
+
+            updateProgress();
+        }
+
+        function createCaseCard(caseData) {
+            const card = document.createElement('div');
+            card.className = 'case-card';
+            card.id = `case-${caseData.id}`;
+
+            const choices = caseData.choices.map((choice, index) => `
+                <button class="choice-btn" onclick="checkAnswer(${caseData.id}, ${index})">
+                    ${choice.text}
+                </button>
+            `).join('');
+
+            card.innerHTML = `
+                <div class="case-number">Case #${caseData.id}</div>
+                <h3 class="case-title">${caseData.title}</h3>
+                <div class="principle-tag">Principle: ${caseData.principle}</div>
+                <p class="case-description">${caseData.description}</p>
+                <div class="choices">
+                    ${choices}
+                </div>
+                <div class="feedback" id="feedback-${caseData.id}"></div>
+                <span class="status-badge unsolved" id="status-${caseData.id}">UNSOLVED</span>
+            `;
+
+            return card;
+        }
+
+        function checkAnswer(caseId, choiceIndex) {
+            const caseData = cases.find(c => c.id === caseId);
+            const choice = caseData.choices[choiceIndex];
+            const feedbackEl = document.getElementById(`feedback-${caseId}`);
+            const statusEl = document.getElementById(`status-${caseId}`);
+            const caseCard = document.getElementById(`case-${caseId}`);
+            const choiceButtons = caseCard.querySelectorAll('.choice-btn');
+
+            // Disable all buttons for this case
+            choiceButtons.forEach(btn => btn.disabled = true);
+
+            // Show feedback
+            feedbackEl.className = `feedback show ${choice.correct ? 'correct' : 'incorrect'}`;
+            feedbackEl.innerHTML = `
+                <strong>${choice.correct ? '✓ Correct!' : '✗ Incorrect'}</strong>
+                <p style="margin-top: 10px;">${choice.feedback}</p>
+            `;
+
+            if (choice.correct) {
+                solvedCases.add(caseId);
+                statusEl.textContent = '✓ SOLVED';
+                statusEl.className = 'status-badge solved';
+                caseCard.classList.add('solved');
+                updateProgress();
+                checkVictory();
+            } else {
+                caseCard.classList.add('failed');
+                // Allow retry after a moment
+                setTimeout(() => {
+                    choiceButtons.forEach(btn => btn.disabled = false);
+                    feedbackEl.classList.remove('show');
+                    caseCard.classList.remove('failed');
+                }, 3000);
+            }
+        }
+
+        function updateProgress() {
+            const solved = solvedCases.size;
+            const total = cases.length;
+            const percentage = Math.round((solved / total) * 100);
+
+            document.getElementById('progress-text').textContent = `${solved} / ${total}`;
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+            document.getElementById('progress-percent').textContent = `${percentage}%`;
+        }
+
+        function checkVictory() {
+            if (solvedCases.size === cases.length) {
+                setTimeout(() => {
+                    document.getElementById('victory-screen').classList.add('show');
+                }, 500);
+            }
+        }
+
+        function resetGame() {
+            solvedCases.clear();
+            document.getElementById('victory-screen').classList.remove('show');
+            initGame();
+        }
+
+        // Initialize game on load
+        initGame();
+    </script>
+</body>
+</html>
