@@ -1,0 +1,34 @@
+{
+  "name": "smartpanda-ocr-app",
+  "version": "1.0.0",
+  "description": "Modern OCR transcript extraction app with visual highlighting using Google Gemini AI",
+  "main": "ocr-transcript-app.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o ocr-transcript-app.html",
+    "dev": "npx http-server -p 8000 -c-1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ocr",
+    "transcript",
+    "gemini",
+    "ai",
+    "document-processing",
+    "visual-highlighting",
+    "education",
+    "data-extraction"
+  ],
+  "author": "SmartPanda Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ampenaranda/Testing.git"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
